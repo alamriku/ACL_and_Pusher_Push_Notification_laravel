@@ -26,6 +26,8 @@ Route::post('/update-role','AdminAuthController@postAssignRole')->name('update-r
 Route::group(['middleware' =>'roles','roles'=>['Author']], function()
 {
     Route::get('/author', 'HomeController@getAuthorPage')->name('get-author');
+    Route::get('/show-post/{post_id}', 'HomeController@ShowPost')->name('show-post');
+    Route::post('/post','HomeController@savePost')->name('save-post');
 
 });
 Route::group(['middleware' =>'roles','roles'=>['Admin']], function()
@@ -38,6 +40,7 @@ Route::group(['middleware' =>'roles','roles'=>['User']], function()
     Route::get('/user', 'HomeController@getUserPage')->name('get-user');
 
 });
+Route::get('pushNotification','pushNotification@sendNotification');
 Route::group(['middleware' =>'roles','roles'=>['Visitor']], function()
 {
     Route::get('/visitor', 'HomeController@getVisitorPage')->name('get-visitor');

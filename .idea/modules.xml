@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/acl_laravel_multi_auth.iml" filepath="$PROJECT_DIR$/.idea/acl_laravel_multi_auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../connections/.idea/connections.iml" filepath="$PROJECT_DIR$/../connections/.idea/connections.iml" />
     </modules>
   </component>
 </project>

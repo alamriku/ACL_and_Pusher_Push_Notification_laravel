@@ -24,6 +24,7 @@
 <!-- Chart JS -->
 <script src="{{asset('public')}}/dist/js/dashboard1.js"></script>
 <script src="{{asset('public')}}/assets/node_modules/toast-master/js/jquery.toast.js"></script>
+<script src="https://js.pusher.com/5.1/pusher.min.js"></script>
 <!--Custom JavaScript -->
 <script type="text/javascript">
     $(function() {
@@ -39,4 +40,24 @@
         $("#loginform").slideUp();
         $("#recoverform").fadeIn();
     });
+
+
+    // Enable pusher logging -  No need to add in Production
+     Pusher.logToConsole = true;
+    // Initialization the Pusher JS library
+    var pusher = new Pusher('82474607f46df8e685c0', {
+        cluster: 'ap1',
+        forceTLS: true
+    });
+    // Subscribe to the channel we specified in our Laravel Event
+    var channel = pusher.subscribe('post-liked');
+    // Bind a function to an Event (the full Laravel class)
+    //var PostLiked="{{'App\Events\PostLiked'}}";
+    channel.bind('PostLiked', function(data) {
+        // this is called when the event notification is received...
+        $('.notify').css('display','block');
+        $('.riku-notification').html(data);
+       // alert(pusher(data));
+    });
+
 </script>
